@@ -494,7 +494,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 100
+    maxNumParticles: 300
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -655,7 +655,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 10
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -737,8 +737,8 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - time: 0
-      minCount: 50
-      maxCount: 50
+      minCount: 300
+      maxCount: 300
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
@@ -3186,7 +3186,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46b742febca453e4ea2a241480263fd4, type: 2}
+  - {fileID: 2100000, guid: daf5c87359109954daff0cbcaceb59be, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

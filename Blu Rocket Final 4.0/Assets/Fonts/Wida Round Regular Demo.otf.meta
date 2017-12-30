@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 7dda3f007f42bfb49a7741915b33005d
+timeCreated: 1509743660
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Wida Round Demo
+  fontNames:
+  - Wida Round Demo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 74a105de05f535548bce52674bc3ee12, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

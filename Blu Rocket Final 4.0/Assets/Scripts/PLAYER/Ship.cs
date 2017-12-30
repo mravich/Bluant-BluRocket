@@ -22,8 +22,15 @@ public class Ship : MonoBehaviour {
 	public int currentScore, highScore;
 	public GameObject button,button2;
 	public GameObject camMain;
-	public AudioClip hit;
+	public AudioClip hit,scoreSound;
 	public ParticleSystem explosion;
+
+	public GameObject ScoreText;
+
+
+    public int coins;
+    public int coinsPerGame;
+
 	// Use this for initialization
 
 	void OnEnable(){
@@ -55,9 +62,12 @@ public class Ship : MonoBehaviour {
 		canTeleport = true;
 		canRotate = true;
 		scoreText.text = 0.ToString ();
-		highScore = PlayerPrefs.GetInt ("HighScore");
-		 startRotation = shipTransform.eulerAngles;
-		 currentRotation = shipTransform.eulerAngles;
+        highScore = PlayerPrefsManager.GetHighScore();
+        coins = PlayerPrefsManager.GetCoins();
+		startRotation = shipTransform.eulerAngles;
+	    currentRotation = shipTransform.eulerAngles;
+
+        coinsPerGame = 0;
 
 	}
 
@@ -232,15 +242,21 @@ public class Ship : MonoBehaviour {
 	void OnTriggerEnter(Collider coll){
 		
 		if (coll.tag == "Cube") {
+           
+            //make new script for this Void
+
+            
+
 			Instantiate (explosion, transform.position, Quaternion.identity);
 
 			button.SetActive (true);
 			button2.SetActive (true);
-			Handheld.Vibrate();
+			//Handheld.Vibrate();
 			camMain.GetComponent<CameraShake> ().shakeDuration = 0.15f;
 			AudioSource.PlayClipAtPoint (hit,camMain.transform.position);
 
-
+			GameObject scoreSprite = Instantiate (ScoreText, transform.position, Quaternion.identity);
+			AudioSource.PlayClipAtPoint (scoreSound,camMain.transform.position);
 			gameObject.SetActive (false);
 		} else if (coll.tag == "Row") {
 			
@@ -248,11 +264,19 @@ public class Ship : MonoBehaviour {
 			if (currentScore > highScore) {
 			
 				highScore = currentScore;
-				PlayerPrefs.SetInt ("HighScore", highScore);
-				PlayerPrefs.Save ();
+                
+                PlayerPrefsManager.SetHighScore(highScore);
+                
 			}
 
-			scoreText.text = currentScore.ToString ();
+            //Set Coins
+
+            coinsPerGame++;
+            PlayerPrefsManager.SetCoins(coinsPerGame);
+
+            ///////////////
+
+            scoreText.text = currentScore.ToString ();
 
 		} 
 

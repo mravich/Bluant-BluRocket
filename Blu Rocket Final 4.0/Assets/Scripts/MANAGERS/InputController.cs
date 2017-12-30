@@ -47,8 +47,8 @@ public class InputController : MonoBehaviour {
 	void Update () {
 
 
-		TouchMovement ();
-		//computerControls();
+		//TouchMovement ();
+		computerControls();
 
 	
 

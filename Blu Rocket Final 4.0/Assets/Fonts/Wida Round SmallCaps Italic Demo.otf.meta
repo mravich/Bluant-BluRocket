@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 64fbb8dbe9ac0e64291d4118c1aecd14
+timeCreated: 1509743660
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Wida Round SmallCaps Demo
+  fontNames:
+  - Wida Round SmallCaps Demo
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
