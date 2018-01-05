@@ -20,7 +20,7 @@ public class CoinsShopManager : MonoBehaviour {
             coinsText.text = coins.ToString();
         }else
         {
-            Debug.LogError("coins is les then 0");
+            Debug.LogError("coins is less then 0");
         }
 	}
 	
