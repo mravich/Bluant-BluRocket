@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4136416724549142}
-  - component: {fileID: 114277491353670520}
+  - component: {fileID: 114963502945062094}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114277491353670520
+--- !u!114 &114963502945062094
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1082627512330626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c59816cc75198429439f4413c6f0c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 527f0c13a96ba734c8b4339bf1a8a0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   autoLoadNextLevelAfter: 0

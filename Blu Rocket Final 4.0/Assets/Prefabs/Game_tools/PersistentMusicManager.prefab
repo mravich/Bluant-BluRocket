@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4093524090153860}
-  - component: {fileID: 114216064398424244}
   - component: {fileID: 82757060814547612}
+  - component: {fileID: 114281958789161150}
   m_Layer: 0
   m_Name: PersistentMusicManager
   m_TagString: Untagged
@@ -108,7 +108,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -121,7 +121,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114216064398424244
+--- !u!114 &114281958789161150
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -129,10 +129,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1830449573301416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474ab3a6fe3d5994995683659ad822ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 554311d2c7ee9eb449c84858ec7ad0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelMusicChangeArray:
-  - {fileID: 8300000, guid: bae20caf7b233524a9d3e2cb8416bf88, type: 3}
-  - {fileID: 8300000, guid: a3b1c62063d4f3340bae56041dfd53e8, type: 3}
-  - {fileID: 0}
+  levelMusicChangeArray: []
