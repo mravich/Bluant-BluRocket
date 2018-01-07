@@ -106,9 +106,7 @@ public class FacebookManager : MonoBehaviour {
 	}
 
 	public void Share(){
-		FB.FeedShare(
-		
-			string.Empty,
+		FB.FeedShare(string.Empty,
 			new Uri(AppLinkURL),
 			"Hello this is the title",
 			"This is the caption",
