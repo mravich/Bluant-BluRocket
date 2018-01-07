@@ -5459,7 +5459,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -828741286
+  randomSeed: 385541115
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5922,7 +5922,7 @@ ParticleSystem:
     alignToDirection: 0
     randomDirectionAmount: 0
     sphericalDirectionAmount: 0
-    randomPositionAmount: 0.78
+    randomPositionAmount: 0
     radius:
       value: 0.1627914
       mode: 0
@@ -6111,16 +6111,22 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 2
-          time: 0.11226273
-          value: 0.097311795
-          inSlope: 4.917641
-          outSlope: 4.917641
+          time: 0
+          value: 0
+          inSlope: 1.1005541
+          outSlope: 1.1005541
           tangentMode: 0
         - serializedVersion: 2
-          time: 0.994812
+          time: 0.48800635
           value: 1
-          inSlope: 2
-          outSlope: 2
+          inSlope: -0.049580224
+          outSlope: -0.049580224
+          tangentMode: 0
+        - serializedVersion: 2
+          time: 1
+          value: 0
+          inSlope: -1.9377047
+          outSlope: -1.9377047
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -7026,7 +7032,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 1
+    enabled: 0
     strength:
       serializedVersion: 2
       minMaxState: 3
@@ -8847,7 +8853,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1719094607
+  randomSeed: -931024141
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -19480,7 +19486,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1928468124
+  randomSeed: -906221621
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -19570,7 +19576,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0, b: 0, a: 1}
+      maxColor: {r: 0, g: 0.33793116, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -19943,7 +19949,7 @@ ParticleSystem:
     alignToDirection: 0
     randomDirectionAmount: 0
     sphericalDirectionAmount: 0
-    randomPositionAmount: 0.78
+    randomPositionAmount: 0
     radius:
       value: 0.1627914
       mode: 0
@@ -21047,7 +21053,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 1
+    enabled: 0
     strength:
       serializedVersion: 2
       minMaxState: 3

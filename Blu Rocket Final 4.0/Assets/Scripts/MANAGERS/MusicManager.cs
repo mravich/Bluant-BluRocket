@@ -19,7 +19,12 @@ public class MusicManager : MonoBehaviour {
 		audioSource = GetComponent<AudioSource> ();
 	}
 
-
+    public void StopMusic()
+    {
+        print("Stop playing music");
+        audioSource.Stop();
+        print("prestala je muzika");
+    }
 
 
 	void OnLevelWasLoaded(int level){
