@@ -12,7 +12,7 @@ public class Ship : MonoBehaviour {
 	public Transform shipTransform;
 	public float shipSpeed = 5f;
 	private bool isMoving;
-	public bool isMovingLeft, isMovingRight,canTeleport,canRotate;
+	public bool isMovingLeft, isMovingRight,canRotate;
 	public float tilt;
 	public Vector3 vektor;
 	public Vector3 startRotation,currentRotation;
@@ -26,6 +26,15 @@ public class Ship : MonoBehaviour {
 	public ParticleSystem explosion;
 
 	public GameObject ScoreText;
+    Object[] materials;
+
+    //Ship body for set current ship
+    public GameObject shipBody;
+
+    //Teleport 
+    public bool leftTeleportActive, rightTeleportActive;
+    public float teleportTime;
+    int bonusFromTeleport = 1;
 
 
     public int coins;
@@ -47,7 +56,7 @@ public class Ship : MonoBehaviour {
 		// UCITAVANJE RIGIDBODIJA OBJEKTA U OVOM SLUCAJU PLANE-A
 		rb = this.GetComponent<Rigidbody>();
 
-
+        setSelectedShip();
 		// UCITAVANJE FORCE MANAGERA 
 		//forceManager = this.GetComponent<ForceManager> ();
 
@@ -59,8 +68,12 @@ public class Ship : MonoBehaviour {
 
 	void Start () {
 
-		canTeleport = true;
-		canRotate = true;
+        leftTeleportActive = false;
+        rightTeleportActive = false;
+
+
+
+        canRotate = true;
 		scoreText.text = 0.ToString ();
         highScore = PlayerPrefsManager.GetHighScore();
         coins = PlayerPrefsManager.GetCoins();
@@ -77,12 +90,25 @@ public class Ship : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		restrictShipPosition ();
-		restrictShipVelocity ();
-		teleportShip ();
+        //restrictShipVelocity ();
+        //teleportShip ();
+        Debug.Log("coins per game: " + coinsPerGame);
+        if (teleportTime <= 2 && teleportTime > 0)
+            {
+            teleportTime -= Time.deltaTime;
+            Debug.Log("Poceo sam bonus sad je : " + bonusFromTeleport);
+                    if (teleportTime <= 0)
+                          {
+                
+                            bonusFromTeleport = 1;
+                            Debug.Log("Prekinio sam bonus i vratio na : " + bonusFromTeleport);
+                                        //   BonusFromTeleportCounter();
+                            teleportTime = 0.0f;
+            }
+         }
 
 
-
-	}
+    }
 
 
 
@@ -200,7 +226,7 @@ public class Ship : MonoBehaviour {
 
 	public void restrictShipPosition(){
 		Transform transform = getTransformOfObject ();
-		Vector3 currentPosition = new Vector3(Mathf.Clamp(transform.position.x,-36.5f,36.5f),transform.position.y,transform.position.z);
+		Vector3 currentPosition = new Vector3(Mathf.Clamp(transform.position.x,-37.5f,37.5f),transform.position.y,transform.position.z);
 		transform.position = currentPosition;
 
 	}
@@ -220,23 +246,12 @@ public class Ship : MonoBehaviour {
 
 	public void teleportShip(){
 
-		Vector3 currentPosition = transform.position;
-		float currentx = currentPosition.x;
-		if (currentx >= -36f && currentx <=36f) {
-			canTeleport = true;
-		}
-		if (currentx <= -36.1f || currentx >= 36.1f) {
-		
-			if (canTeleport) {
-				Vector3 newPosition = new Vector3 (currentx*-1f, currentPosition.y, currentPosition.z);
-				shipTransform.position = newPosition;
-				canTeleport = false;
-			}
+        Vector3 newPosition = new Vector3(transform.position.x * -1f, transform.position.y, transform.position.z);
+        shipTransform.position = newPosition;
+        
 
 
-		}
-	
-	}
+    }
 
 
 	void OnTriggerEnter(Collider coll){
@@ -248,8 +263,8 @@ public class Ship : MonoBehaviour {
             
 
 			Instantiate (explosion, transform.position, Quaternion.identity);
-
-			button.SetActive (true);
+            PlayerPrefsManager.SetCoins(coinsPerGame);
+            button.SetActive (true);
 			button2.SetActive (true);
 			//Handheld.Vibrate();
 			camMain.GetComponent<CameraShake> ().shakeDuration = 0.15f;
@@ -270,11 +285,22 @@ public class Ship : MonoBehaviour {
 			}
 
             //Set Coins
+            coinsPerGame += 1;
+            Debug.Log("coinsPerGameNow 1 : " + coinsPerGame);
+            Debug.Log("bonusFromTeleport : " + bonusFromTeleport);
+                 if (bonusFromTeleport != 1)
+                    {
+                        coinsPerGame = coinsPerGame + bonusFromTeleport;
+                    }
+            
+            Debug.Log("coinsPerGameNow 2 : " + coinsPerGame);
 
-            coinsPerGame++;
-            PlayerPrefsManager.SetCoins(coinsPerGame);
 
-            ///////////////
+                        ///////////////		
+
+            
+                        ///////////////
+           // coinsText.text = coinsPerGame.ToString();
 
             scoreText.text = currentScore.ToString ();
 
@@ -284,4 +310,38 @@ public class Ship : MonoBehaviour {
 	
 
 	}
+    public void setSelectedShip()
+    {
+        
+        int currentShip = -1;
+        Material[] set = new Material[2];
+        currentShip = PlayerPrefsManager.getCurrentShip();
+        Debug.Log("current ship..............." + currentShip);
+        materials = Resources.LoadAll("Material/Rocket_" + currentShip + "", typeof(Material));
+        set[0] = (Material)materials[0];
+        set[1] = (Material)materials[1];
+        if (materials[1] != null)
+        {
+
+           shipBody.GetComponent<Renderer>().materials = set;
+        }
+    }
+    public void BonusFromTeleportCounter()
+     {
+        
+         if(bonusFromTeleport == 1)
+         {
+             teleportTime = 2.0f;
+         }
+         if(teleportTime <= 0)
+         {
+ 
+             bonusFromTeleport = 1;
+         }
+         else if(teleportTime > 0 && teleportTime <= 2)
+         {
+             bonusFromTeleport++;
+             teleportTime = 2.0f;
+         }
+     }
 }
