@@ -20,7 +20,10 @@ public class MusicManager : MonoBehaviour {
 	}
 
 
-
+   public void StopMusic()
+    {
+        audioSource.Stop();
+    }
 
 	void OnLevelWasLoaded(int level){
 
