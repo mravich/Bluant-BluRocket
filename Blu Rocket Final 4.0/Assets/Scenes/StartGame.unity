@@ -3685,7 +3685,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4136416724549142, guid: ce8ad5bd30b753c47a94c63cbc9d193c, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114277491353670520, guid: ce8ad5bd30b753c47a94c63cbc9d193c,
         type: 2}
@@ -3709,9 +3709,27 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114277491353670520, guid: ce8ad5bd30b753c47a94c63cbc9d193c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ce8ad5bd30b753c47a94c63cbc9d193c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &342215881 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1082627512330626, guid: ce8ad5bd30b753c47a94c63cbc9d193c,
+    type: 2}
+  m_PrefabInternal: {fileID: 342215880}
+--- !u!114 &342215882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 342215881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527f0c13a96ba734c8b4339bf1a8a0a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoLoadNextLevelAfter: 0
 --- !u!1 &399962687
 GameObject:
   m_ObjectHideFlags: 0
@@ -3922,9 +3940,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1222482994}
-        m_MethodName: LoadLevel
-        m_Mode: 5
+      - m_Target: {fileID: 342215882}
+        m_MethodName: LoadNextLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4007,7 +4025,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4720108246318938, guid: 2670d49cd0e035d468200c8410fc24e2, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2670d49cd0e035d468200c8410fc24e2, type: 2}
@@ -7645,14 +7663,8 @@ Transform:
   - {fileID: 1317591705}
   - {fileID: 201233867}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1222482994 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114277491353670520, guid: ce8ad5bd30b753c47a94c63cbc9d193c,
-    type: 2}
-  m_PrefabInternal: {fileID: 342215880}
-  m_Script: {fileID: 11500000, guid: 67c59816cc75198429439f4413c6f0c7, type: 3}
 --- !u!1 &1269102199
 GameObject:
   m_ObjectHideFlags: 0
@@ -8372,7 +8384,7 @@ Transform:
   m_Children:
   - {fileID: 1666139842}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 6.7, y: 47, z: 22.5}
 --- !u!1 &1699223194
 GameObject:
@@ -8387,7 +8399,7 @@ GameObject:
   - component: {fileID: 1699223196}
   - component: {fileID: 1699223199}
   m_Layer: 5
-  m_Name: Setings
+  m_Name: Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8450,7 +8462,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1222482994}
+      - m_Target: {fileID: 0}
         m_MethodName: LoadLevel
         m_Mode: 5
         m_Arguments:
@@ -8482,7 +8494,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ba3eeb112eebd0c42a29ea4b511c1092, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed560a10a86bff34ea8ba4f7372f28b6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12106,7 +12118,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1222482994}
+      - m_Target: {fileID: 342215882}
         m_MethodName: QuitRequest
         m_Mode: 1
         m_Arguments:
@@ -12778,7 +12790,12 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1222482994}
+      objectReference: {fileID: 342215882}
+    - target: {fileID: 114948390472520162, guid: 526bab39febb74a4884719a33c6463df,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadLevel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 526bab39febb74a4884719a33c6463df, type: 2}
   m_IsPrefabParent: 0

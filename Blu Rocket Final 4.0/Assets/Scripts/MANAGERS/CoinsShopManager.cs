@@ -28,6 +28,32 @@ public class CoinsShopManager : MonoBehaviour {
 	void Update () {
 
         coinsText.text = coins.ToString();
+
+
     }
+
+    public void BuyItem()
+    {
+        int currPrice = 0;
+        string currName = "";
+        currPrice = GameObject.Find("CoinsShopManager").GetComponent<ShopItemsManager>().selectedItemPrice;
+        currName = GameObject.Find("CoinsShopManager").GetComponent<ShopItemsManager>().selectedItemName;
+        Debug.Log("Buy Item name: " + currName + " , item price: " + currPrice);
+        if (coins >= currPrice && currName != "")
+        {
+            PlayerPrefsManager.setUnlockedItem(currName);
+            coins -= currPrice;
+            GameObject.Find("CoinsShopManager").GetComponent<ShopItemsManager>().selectedItemAvaliability = true;
+
+
+
+
+        }
+        else
+        {
+            Debug.Log("U have no enought money! Your balance is : " + coins);
+        }
+    }
+
     
 }
