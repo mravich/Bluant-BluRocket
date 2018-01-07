@@ -686,6 +686,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 862965094}
+  - component: {fileID: 862965095}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -707,6 +708,23 @@ Transform:
   m_Father: {fileID: 1243592109}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -26, z: 0}
+--- !u!95 &862965095
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 862965093}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1c6ac8edec005e04e91637ab0ccc428e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &902865912
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,6 +1008,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1243592109}
+  - component: {fileID: 1243592110}
   m_Layer: 0
   m_Name: SHOP_ROCKETS
   m_TagString: Untagged
@@ -1013,6 +1032,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1243592110
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1243592108}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7d090ace5f0e9c843af2163d1ff5c2c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1355516971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,6 +1429,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1672430885}
+  - component: {fileID: 1672430886}
   m_Layer: 0
   m_Name: Middle
   m_TagString: Untagged
@@ -1414,6 +1451,23 @@ Transform:
   m_Father: {fileID: 1243592109}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1672430886
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1672430884}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5064c0d95b1ed534e9b59abe15c05d9c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1693435451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,6 +1642,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1774034075}
+  - component: {fileID: 1774034076}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -1609,6 +1664,23 @@ Transform:
   m_Father: {fileID: 1243592109}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 26, z: 0}
+--- !u!95 &1774034076
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1774034074}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 19c2b0091f0be8e4bb1e5e80760eb6a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!4 &1825589039 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4964234450708574, guid: 387f6fe0144841d41b7e2f51df6f19cf,
