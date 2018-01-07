@@ -37,6 +37,18 @@ public class ShopItemsManager : MonoBehaviour {
 	private static ShopItemsManager _instance;
 
 
+	// SWIPE 
+	private float fingerStartTime  = 0.0f;
+	private Vector2 fingerStartPos = Vector2.zero;
+
+	private bool isSwipe = false;
+	private float minSwipeDist  = 50.0f;
+	private float maxSwipeTime = 0.5f;
+	private string myString = " no move";
+	public Text gestureText;
+	public float gestureTime;
+
+
 	//TOODOO: check if Instance is needed or not for this script
 	public static ShopItemsManager Instance
 	{
@@ -68,6 +80,10 @@ public class ShopItemsManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
+
+		// CHECK FOR SWIPE
+
+		checkForUserSwipe ();
 
 
 		if (set0[0] != null && set1[1] != null && set2 != null)
@@ -101,6 +117,68 @@ public class ShopItemsManager : MonoBehaviour {
 
 	}
 
+	public void checkForUserSwipe(){
+	
+		if (Input.touchCount > 0){
+
+			foreach (Touch touch in Input.touches)
+			{
+				switch (touch.phase)
+				{
+				case TouchPhase.Began :
+					/* this is a new touch */
+					isSwipe = true;
+					fingerStartTime = Time.time;
+					fingerStartPos = touch.position;
+					break;
+
+				case TouchPhase.Canceled :
+					/* The touch is being canceled */
+					isSwipe = false;
+					break;
+
+				case TouchPhase.Ended :
+
+					gestureTime = Time.time - fingerStartTime;
+					float gestureDist = (touch.position - fingerStartPos).magnitude;
+
+					if (isSwipe && gestureTime < maxSwipeTime && gestureDist > minSwipeDist){
+						Vector2 direction = touch.position - fingerStartPos;
+						Vector2 swipeType = Vector2.zero;
+
+						if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y)){
+							// the swipe is horizontal:
+							swipeType = Vector2.right * Mathf.Sign(direction.x);
+						}else{
+							// the swipe is vertical:
+							swipeType = Vector2.up * Mathf.Sign(direction.y);
+						}
+
+						if(swipeType.x != 0.0f){
+							if(swipeType.x > 0.0f){
+								myString = "ROTATE RIGHT";
+								gestureText.text = "RIGHT";
+								swipeRight ();
+
+							}else{
+								myString = "ROTATE LEFT";
+								gestureText.text = "Left";
+								swipeLeft ();
+
+
+							}
+						}
+
+
+
+					}
+
+					break;
+				}
+			}
+		}
+	}
+
 	public void checkSwipe()
 	{
 
@@ -120,7 +198,7 @@ public class ShopItemsManager : MonoBehaviour {
 
 			//saving current " MIDDLE " item price 
 			selectedItemPrice = curSelectedItemPrice ;
-			selectedItemPriceText.text = "Price: " + selectedItemPrice.ToString() + "Coins";
+			selectedItemPriceText.text = selectedItemPrice.ToString();
 			selectedItemName = "rocket1";
 
 			//
@@ -141,7 +219,7 @@ public class ShopItemsManager : MonoBehaviour {
 			set1 = SetTexture("rocket2");
 
 			selectedItemPrice = curSelectedItemPrice;
-			selectedItemPriceText.text = "Price: " + selectedItemPrice.ToString() + "Coins";
+			selectedItemPriceText.text = selectedItemPrice.ToString();
 			selectedItemName = "rocket2";
 
 			set2 = SetTexture("rocket3");
@@ -156,7 +234,7 @@ public class ShopItemsManager : MonoBehaviour {
 			set1 = SetTexture("rocket3");
 
 			selectedItemPrice = curSelectedItemPrice;
-			selectedItemPriceText.text = "Price: " + selectedItemPrice.ToString() + "Coins";
+			selectedItemPriceText.text = selectedItemPrice.ToString();
 			selectedItemName = "rocket3";
 
 			set2 = SetTexture("rocket4");
@@ -171,7 +249,7 @@ public class ShopItemsManager : MonoBehaviour {
 			set1 = SetTexture("rocket4");
 
 			selectedItemPrice = curSelectedItemPrice;
-			selectedItemPriceText.text = "Price: " + selectedItemPrice.ToString() + "Coins";
+			selectedItemPriceText.text = selectedItemPrice.ToString();
 			selectedItemName = "rocket4";
 
 			set2 = SetTexture("rocket5");
@@ -186,7 +264,7 @@ public class ShopItemsManager : MonoBehaviour {
 			set1 = SetTexture("rocket5");
 
 			selectedItemPrice = curSelectedItemPrice;
-			selectedItemPriceText.text = "Price: " + selectedItemPrice.ToString() + "Coins";
+			selectedItemPriceText.text = selectedItemPrice.ToString();
 			selectedItemName = "rocket5";
 
 			set2 = SetTexture("rocket6");
@@ -202,7 +280,7 @@ public class ShopItemsManager : MonoBehaviour {
 			set1 = SetTexture("rocket6");
 
 			selectedItemPrice = curSelectedItemPrice;
-			selectedItemPriceText.text = "Price: " + selectedItemPrice.ToString() + "Coins";
+			selectedItemPriceText.text = selectedItemPrice.ToString();
 			selectedItemName = "rocket6";
 
 			set2 = SetTexture("rocket7");
@@ -217,7 +295,7 @@ public class ShopItemsManager : MonoBehaviour {
 			set1 = SetTexture("rocket7");
 
 			selectedItemPrice = curSelectedItemPrice;
-			selectedItemPriceText.text = "Price: " + selectedItemPrice.ToString() + "Coins";
+			selectedItemPriceText.text = selectedItemPrice.ToString();
 			selectedItemName = "rocket7";
 
 			set2 = SetTexture("rocket8");
@@ -232,7 +310,7 @@ public class ShopItemsManager : MonoBehaviour {
 			set1 = SetTexture("rocket8");
 
 			selectedItemPrice = curSelectedItemPrice;
-			selectedItemPriceText.text = "Price: " + selectedItemPrice.ToString() + "Coins";
+			selectedItemPriceText.text = selectedItemPrice.ToString();
 			selectedItemName = "rocket8";
 
 			set2 = SetTexture("rocket9");
@@ -247,7 +325,7 @@ public class ShopItemsManager : MonoBehaviour {
 			set1 = SetTexture("rocket9");
 
 			selectedItemPrice = curSelectedItemPrice;
-			selectedItemPriceText.text = "Price: " + selectedItemPrice.ToString() + "Coins";
+			selectedItemPriceText.text = selectedItemPrice.ToString();
 			selectedItemName = "rocket9";
 
 			set2 = SetTexture("rocket10");
@@ -261,7 +339,7 @@ public class ShopItemsManager : MonoBehaviour {
 			set1 = SetTexture("rocket10");
 
 			selectedItemPrice = curSelectedItemPrice;
-			selectedItemPriceText.text = "Price: " + selectedItemPrice.ToString() + "Coins";
+			selectedItemPriceText.text = selectedItemPrice.ToString();
 			selectedItemName = "rocket10";
 
 			set2 = SetTexture("rocket1");
@@ -276,7 +354,7 @@ public class ShopItemsManager : MonoBehaviour {
 
 
 		}
-		//  selectedItemPriceText.text = "Price: " + selectedItemPrice.ToString() + "Coins";
+		//  selectedItemPriceText.text = selectedItemPrice.ToString();
 	}
 
 

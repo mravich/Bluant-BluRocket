@@ -11,12 +11,9 @@ public class SwipeDetector : MonoBehaviour {
 	private float minSwipeDist  = 50.0f;
 	private float maxSwipeTime = 0.5f;
 	private string myString = " no move";
-	public Vector3 startPosition;
-	public Rigidbody rb;
-	public float force;
+
 	public float gestureTime;
-	public GameObject explosion;
-	public float currentRotation,correctRotation,smoothness;
+
 
 
 	void OnGUI() {
@@ -26,17 +23,8 @@ public class SwipeDetector : MonoBehaviour {
 	}
 
 
-	void Start(){
-		rb = GetComponent<Rigidbody> (); 
-		startPosition = transform.position;
-
-	}
 	// Update is called once per frame
 	void Update () {
-		restrictPosition ();
-		//computerTestControls ();
-
-	
 
 		if (Input.touchCount > 0){
 
@@ -94,53 +82,6 @@ public class SwipeDetector : MonoBehaviour {
 				}
 			}
 		}
-
-	}
-
-
-	void restrictPosition() {
-	
-		if (transform.position.x > 4.5f || transform.position.x < -5.3f) {
-		
-			transform.position = startPosition;
-			rb.velocity = Vector3.zero;
-		}
-
-		if (transform.position.y > 6.1f || transform.position.y < -5.3f) {
-			transform.position = startPosition;
-			rb.velocity = Vector3.zero;
-
-		}
-	}
-	void computerTestControls(){
-		if(Input.GetKey(KeyCode.UpArrow)){
-			myString = "MOVE UP";
-			rb.AddForce (Vector3.up*force,ForceMode.Impulse);
-
-		}else if(Input.GetKey(KeyCode.DownArrow)){
-			myString = "MOVE DOWN";
-			rb.AddForce (Vector3.down*force,ForceMode.Impulse);
-
-		}else if(Input.GetKey(KeyCode.LeftArrow)){
-			myString = "MOVE LEFT";
-			//rb.AddForce (Vector3.left*force,ForceMode.Impulse);
-			transform.RotateAround(transform.position, transform.up, Time.deltaTime * -90f);
-
-		}else if(Input.GetKey(KeyCode.RightArrow)){
-			myString = "MOVE RIGHT";
-
-			//rb.AddForce (Vector3.right*force,ForceMode.Impulse);
-			transform.RotateAround(transform.position, transform.up, Time.deltaTime * 90f);
-
-		}
-	}
-
-	void OnTriggerEnter(Collider coll){
-	
-		GameObject expl = 	Instantiate (explosion, transform.position, Quaternion.identity);
-		transform.position = startPosition;
-		rb.velocity = Vector3.zero;
-		Destroy (expl, 2f);
 
 	}
 
