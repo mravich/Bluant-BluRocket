@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Ship : MonoBehaviour {
@@ -320,7 +321,8 @@ public class Ship : MonoBehaviour {
         materials = Resources.LoadAll("Material/Rocket_" + currentShip + "", typeof(Material));
         set[0] = (Material)materials[0];
         set[1] = (Material)materials[1];
-        if (materials[1] != null)
+        Scene scene = SceneManager.GetActiveScene();
+        if (materials[1] != null && scene.name != "Leaderboard"  )
         {
 
            shipBody.GetComponent<Renderer>().materials = set;
