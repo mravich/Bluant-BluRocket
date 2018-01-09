@@ -18,6 +18,8 @@ public class ShopItemsManager : MonoBehaviour {
 	public GameObject ship1body;
 	public GameObject ship2body;
 
+	public GameObject Shop_Rockets;
+	private Animator Shop_Rockets_Animator;
 	int currnetItemNum = 1;
 
 	Material[] set0= new Material[2];
@@ -49,6 +51,7 @@ public class ShopItemsManager : MonoBehaviour {
 	public float gestureTime;
 
 
+
 	//TOODOO: check if Instance is needed or not for this script
 	public static ShopItemsManager Instance
 	{
@@ -74,6 +77,10 @@ public class ShopItemsManager : MonoBehaviour {
 
 		//set first sets of Materials
 		checkSwipe(); 
+
+		//SET ANIMATOR FOR SHOP ROCKETS
+		Shop_Rockets_Animator  = Shop_Rockets.GetComponent<Animator>();
+
 
 	}
 
@@ -119,7 +126,10 @@ public class ShopItemsManager : MonoBehaviour {
 
 	public void checkForUserSwipe(){
 	
-		if (Input.touchCount > 0){
+	// COMPUTER OVERRIDE
+
+
+		if (Input.touchCount > 0 ){
 
 			foreach (Touch touch in Input.touches)
 			{
@@ -157,15 +167,18 @@ public class ShopItemsManager : MonoBehaviour {
 						if(swipeType.x != 0.0f){
 							if(swipeType.x > 0.0f){
 								myString = "ROTATE RIGHT";
-								gestureText.text = "RIGHT";
+								gestureText.text = "SwipeLeft:" + Shop_Rockets_Animator.GetBool("SwipeLeft");
 								swipeRight ();
+								Shop_Rockets_Animator.SetBool ("LeftSwipe", false);
+								Shop_Rockets_Animator.SetBool ("RightSwipe", true);
+
 
 							}else{
 								myString = "ROTATE LEFT";
 								gestureText.text = "Left";
 								swipeLeft ();
-
-
+								Shop_Rockets_Animator.SetBool ("LeftSwipe", true);
+								Shop_Rockets_Animator.SetBool ("RightSwipe", false);
 							}
 						}
 
