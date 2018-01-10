@@ -1,4 +1,5 @@
 ﻿using Facebook.Unity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,11 +13,32 @@ public class LeaderBoardScript : MonoBehaviour {
     IResult results;
     List<object> leaderBoardObject = new List<object>();
 
+    public GameObject ProfileText;
+    public GameObject ProfileImage;
+    public GameObject ProfileBest;
+    public GameObject ProfileCoins;
+    public GameObject ProfileRank;
+
+    int rank;
+    int profScore;
+    
+
+
+    bool isLoggedIn = false;
 
     void Awake()
     {
-
-        QueryScores();
+        rank = 1;
+        profScore = PlayerPrefsManager.GetHighScore();
+        isLoggedIn = FacebookManager.Instance.IsLoggedIn;
+        if (isLoggedIn)
+        {
+            DealWithFBMenus(isLoggedIn);
+            QueryScores();
+        }else
+        {
+            Debug.Log("Awake - isLoggedIn is still false !! ");
+        }
     }
 
 	// Use this for initialization
@@ -123,15 +145,22 @@ public class LeaderBoardScript : MonoBehaviour {
            Image FuserAvatar = FriendAvatar.GetComponent<Image>();
 
            FnameText.text = user["name"].ToString();
-           FscoreText.text = entry["score"].ToString();
+            string scoreNow = entry["score"].ToString();
+            FscoreText.text = "Best: " + scoreNow;
+            int currScore = Int32.Parse(scoreNow);
+            if (currScore > profScore)
+            {
+                rank++;
+            }
 
-           FB.API(user["id"].ToString() + "/picture?width=120&heigh=120", HttpMethod.GET, delegate (IGraphResult picResult)
+            FB.API(user["id"].ToString() + "/picture?width=120&heigh=120", HttpMethod.GET, delegate (IGraphResult picResult)
              {
                  if(picResult.Error != null)
                  {
                      Debug.Log(picResult.RawResult.ToString());
                  }else
                  {
+                     Debug.Log("Have pics for ScrollList");
                      FuserAvatar.sprite = Sprite.Create(picResult.Texture, new Rect(0, 0, 120, 75), new Vector2(0, 0));
 
 
@@ -145,4 +174,73 @@ public class LeaderBoardScript : MonoBehaviour {
        }
 
     }
+    void DealWithFBMenus(bool isLoggedIn)
+    {
+        if (FB.IsLoggedIn)
+        {
+            //  FuserAvatar.sprite = leagerbordImage;
+            Text ProfileBestText = ProfileBest.GetComponent<Text>();
+            ProfileBestText.text = profScore + "";
+
+            Text ProfileCoinsText = ProfileCoins.GetComponent<Text>();
+            ProfileCoinsText.text = PlayerPrefsManager.GetCoins() + "";
+
+            Text ProfileRankText = ProfileRank.GetComponent<Text>();
+           
+            ProfileRankText.text = rank + "";
+
+
+            // CHECK IF THE PROFILE NAME IS SET
+            if (FacebookManager.Instance.ProfileName != null)
+            {
+                Text UserName = ProfileText.GetComponent<Text>();
+                UserName.text = FacebookManager.Instance.ProfileName;
+            }
+            else
+            {
+                // IF THERE IS NO PROFILE NAME
+                StartCoroutine("WaitForProfileName");
+            }
+            // CHECK IF THE PROFILE PIC IS SET
+            if (FacebookManager.Instance.ProfilePic != null)
+            {
+                Image ProfilePic = ProfileImage.GetComponent<Image>();
+                ProfilePic.sprite = FacebookManager.Instance.ProfilePic;
+            }
+            else
+            {
+                // IF THERE IS NO PROFILE NAME
+                StartCoroutine("WaitForProfilePic");
+            }
+        }
+        else
+        {
+            Debug.Log("Facebook is SHIT .. u need to log in to get there but u u'r not logged .. hope this error will never be active .. ");
+
+
+           
+        }
+
+
+    }
+
+    IEnumerator WaitForProfileName()
+    {
+        while (FacebookManager.Instance.ProfileName == null)
+        {
+            yield return null;
+        }
+        DealWithFBMenus(FacebookManager.Instance.IsLoggedIn);
+    }
+
+    IEnumerator WaitForProfilePic()
+    {
+        while (FacebookManager.Instance.ProfilePic == null)
+        {
+            yield return null;
+        }
+        DealWithFBMenus(FacebookManager.Instance.IsLoggedIn);
+    }
+
+   
 }

@@ -10,8 +10,7 @@ using UnityEngine.SceneManagement;
 public class FBscript : MonoBehaviour {
 
 
-	public GameObject DialogLoggedIn;
-	public GameObject DialogLoggedOut;
+	
 	public GameObject DialogUsername;
 	public GameObject DialogProfilePic;
     public GameObject Login_Leaderboard;
@@ -119,9 +118,8 @@ public class FBscript : MonoBehaviour {
             FuserAvatar.sprite = leagerbordImage;
 
 
-            DialogLoggedIn.SetActive(true);
-            DialogLoggedOut.SetActive(false);
-            // CHECK IF THE PROFILE NAME IS SET
+           
+          /*  // CHECK IF THE PROFILE NAME IS SET
             if (FacebookManager.Instance.ProfileName != null)
             {
                 Text UserName = DialogUsername.GetComponent<Text>();
@@ -142,20 +140,19 @@ public class FBscript : MonoBehaviour {
             {
                 // IF THERE IS NO PROFILE NAME
                 StartCoroutine("WaitForProfilePic");
-            }
+            }*/
             }else
         {
             FuserAvatar.sprite = facebookImage;
 
 
-            DialogLoggedIn.SetActive(false);
-            DialogLoggedOut.SetActive(true);
+            
         }
 
       
     }
 
-	IEnumerator WaitForProfileName(){
+	/*IEnumerator WaitForProfileName(){
 		while (FacebookManager.Instance.ProfileName == null) {
 			yield return null;
 		}
@@ -167,7 +164,7 @@ public class FBscript : MonoBehaviour {
 			yield return null;
 		}
 		DealWithFBMenus (FacebookManager.Instance.IsLoggedIn);
-	}
+	}*/
 
 	public void Share(){
 		FacebookManager.Instance.Share ();
